@@ -97,13 +97,18 @@ function getPasswordOptions() {
   var validEntry = false; //variable to be used as condition in while loop
 
   //while loop runs as validEntry is false - as long as a number between 8 and 128 is not entered by user
-  while(validEntry == false){ 
+  while(validEntry == false){
+    //prompts user to enter desired password length and stores entry in the variable 'passwordLength'
     var passwordLength = prompt('How long would you like your password to be? Enter a number from 8 to 128 (including 8 and 128)');
     var parsedPasswordLength = parseInt(passwordLength); //converts user entry (string) to number 
 
     //conditional statement checks if number entered is between 8 and 128 
     if(parsedPasswordLength >= 8 && parsedPasswordLength <= 128 ){
       validEntry = true; //number meets criteria so loop is ended
+    }
+    else if(passwordLength === null){ //if user presses cancel button, loop is ended
+      alert('No problem. Press the generate button when you would like a password');
+      return;
     }
     else{
       alert('Your entry is invalid. Please enter a number between 8 and 128'); //criteria not met - loop while execute again
@@ -115,12 +120,13 @@ return parsedPasswordLength;
 
 // Function for getting a random element from an array
 function getRandom(arr) {
-var randomIndex = Math.floor(Math.random() * arr.length)
+var randomIndex = Math.floor(Math.random() * arr.length);
   
 return (arr.at(randomIndex));
 }
 
 var newPassword = [];
+var newPasswordString;
 // Function to generate password with user input
 function generatePassword() {
 
@@ -132,12 +138,12 @@ function generatePassword() {
     newPassword.push(currentChar);
 
   }
+
+  newPasswordString = newPassword.join('');
+
+  return newPasswordString;
 }
 
-generatePassword()
-
-var newPasswordString = newPassword.join('');
-console.log(newPasswordString);
 
 // Get references to the #generate element
 var generateBtn = document.querySelector('#generate');
@@ -151,4 +157,6 @@ function writePassword() {
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener('click', writePassword);
+generateBtn.addEventListener('click', writeNewPassword = () => {
+  writePassword();
+});
