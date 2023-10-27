@@ -88,45 +88,56 @@ var upperCasedCharacters = [
   'Z'
 ];
 
+//new array to hold the characters of all other arrays
+var allCharacters = specialCharacters.concat(numericCharacters).concat(lowerCasedCharacters).concat(upperCasedCharacters);
+
 // Function to prompt user for password options
 
-// function getPasswordOptions() {
-//   var validEntry = false; //variable to be used as condition in while loop
+function getPasswordOptions() {
+  var validEntry = false; //variable to be used as condition in while loop
 
-//   //while loop runs as validEntry is false - as long as a number between 8 and 128 is not entered by user
-//   while(validEntry == false){ 
-//     var passwordLength = prompt('How long would you like your password to be? Enter a number from 8 to 128 (including 8 and 128)');
-//     var parsedPasswordLength = parseInt(passwordLength); //converts user entry (string) to number 
-//     console.log(parsedPasswordLength);
+  //while loop runs as validEntry is false - as long as a number between 8 and 128 is not entered by user
+  while(validEntry == false){ 
+    var passwordLength = prompt('How long would you like your password to be? Enter a number from 8 to 128 (including 8 and 128)');
+    var parsedPasswordLength = parseInt(passwordLength); //converts user entry (string) to number 
 
-//     //conditional statement checks if number entered is between 8 and 128 
-//     if(parsedPasswordLength >= 8 && parsedPasswordLength <= 128 ){
-//       console.log('password length: ' + parsedPasswordLength);
-//       validEntry = true; //number meets criteria so loop is ended
-//     }
-//     else{
-//       alert('Your entry is invalid. Please enter a number between 8 and 128'); //criteria not met - loop while execute again
-//     }
-//   }
+    //conditional statement checks if number entered is between 8 and 128 
+    if(parsedPasswordLength >= 8 && parsedPasswordLength <= 128 ){
+      validEntry = true; //number meets criteria so loop is ended
+    }
+    else{
+      alert('Your entry is invalid. Please enter a number between 8 and 128'); //criteria not met - loop while execute again
+    }
+  }
 
-// }
-
-// getPasswordOptions();
+return parsedPasswordLength;
+} 
 
 // Function for getting a random element from an array
 function getRandom(arr) {
 var randomIndex = Math.floor(Math.random() * arr.length)
   
-// console.log(arr.at(randomIndex));
-return (arr.at(randomIndex))
+return (arr.at(randomIndex));
 }
 
-
-
+var newPassword = [];
 // Function to generate password with user input
 function generatePassword() {
 
+  var lengthOfPassword = getPasswordOptions();
+
+  for(var i=0; i<lengthOfPassword; i++){
+    
+    var currentChar = getRandom(allCharacters);
+    newPassword.push(currentChar);
+
+  }
 }
+
+generatePassword()
+
+var newPasswordString = newPassword.join('');
+console.log(newPasswordString);
 
 // Get references to the #generate element
 var generateBtn = document.querySelector('#generate');
