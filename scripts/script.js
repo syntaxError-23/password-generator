@@ -173,7 +173,6 @@ function generatePassword() {
   return newPasswordString;
 }
 
-
 // Get references to the #generate element
 var generateBtn = document.querySelector('#generate');
 
@@ -181,15 +180,19 @@ var generateBtn = document.querySelector('#generate');
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector('#password');
-
+  
   passwordText.value = password;
 
+}
+
+function dataReset(){
+  selectedChars.length = 0;
+  newPassword.length = 0;
+  newPasswordString = "";
 }
 
 // Add event listener to generate button
 generateBtn.addEventListener('click', writeNewPassword = () => {
   writePassword();
-  console.log('Before: ' + selectedChars)
-  selectedChars.length = 0;
-  console.log('After: ' + selectedChars);
+  dataReset();
 });
