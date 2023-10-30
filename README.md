@@ -395,6 +395,7 @@ The variable `passwordText` targets the `textarea` element in the HTML. It is th
 
 The value of `passwordText` is assigned the value of `password` (which was just assigned the value of `newPasswordString`). 
 
+---
 
 #### Function 5: Clearing
 
@@ -416,17 +417,21 @@ function dataReset(){
 
 </details>
 
+---
+
 
 #### Event Listener: All of the above
-
-<details>
-<summary>Click to view code block</summary>
 
 First the variable `generateBtn` targets the button element as it has an id of 'generate'. 
 
 The event listener on `generateBtn` 'listens' for a click. When the user clicks the button, the `writePassword`function is called which utilises all the previous functions to generate a random password and print it to the webpage.
 
 the `dataReset` Function is then called to clear the relevant variables so they are ready for the next execution of the function.
+
+<details>
+<summary>Click to view code block</summary>
+
+
 
 ```
 var generateBtn = document.querySelector('#generate');
@@ -440,6 +445,10 @@ generateBtn.addEventListener('click', writeNewPassword = () => {
 
 </details>
 
+---
+
 
 
 ## How do I access the page?
+
+The webpage has been deployed via Github pages. [Click here](https://syntaxerror-23.github.io/password-generator/) to access it.
