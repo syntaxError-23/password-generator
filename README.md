@@ -117,12 +117,12 @@ The program utilises a series of functions to complete the various tasks require
 The program can be split into 6 sections as there are 5 functions and 1 event listener all with different purposes.
 
 
-[Function 1: User Preferences](#function-1-user-preferences)
- [Function 2: Random Character Generation](#function-2-random-character-generation)
- [Function 3: Password Generation](#function-3-password-generation)
- [Function 4: Writing to the webpage](#function-4-writing-to-the-webpage)
- [Function 5: Clearing](#function-5-clearing)
- [Event Listener: All of the above](#event-listener-all-of-the-above)
+- [Function 1: User Preferences](#function-1-user-preferences)
+- [Function 2: Random Character Generation](#function-2-random-character-generation)
+- [Function 3: Password Generation](#function-3-password-generation)
+- [Function 4: Writing to the webpage](#function-4-writing-to-the-webpage)
+- [Function 5: Clearing](#function-5-clearing)
+- [Event Listener: All of the above](#event-listener-all-of-the-above)
 
 
 There are initially 4 arrays of strings containing special characters, numbers, lowercase letters and uppercase letters respectively. 
@@ -365,8 +365,81 @@ Once the loop has completed, the contents of the `newPassword` array are convert
 
 #### Function 4: Writing to the webpage
 
+Function 4 outputs the password to the webpage
+
+
+<details>
+<summary>Click to view code block</summary>
+
+```
+
+function writePassword() {
+  var password = generatePassword(); 
+
+  var passwordText = document.querySelector('#password');
+  
+  passwordText.value = password; 
+
+}
+
+```
+
+</details>
+
+
+---
+
+The variable `password` is assigned the return value of the `generatePassword` function (`newPasswordString`).
+
+The variable `passwordText` targets the `textarea` element in the HTML. It is then treated is an object (this is an oversimplication).
+
+The value of `passwordText` is assigned the value of `password` (which was just assigned the value of `newPasswordString`). 
+
+
 #### Function 5: Clearing
 
+Function 5 resets the `selectedChars` and `newPasswordLength` arrays as well as the `newPasswordString` variable. 
+
+This is to ensure that after the function is called, data from the previous execution of the function is not still stored in them.
+
+<details>
+<summary>Click to view code block</summary>
+
+```
+function dataReset(){
+  selectedChars.length = 0;
+  newPassword.length = 0;
+  newPasswordString = "";
+}
+
+```
+
+</details>
+
+
 #### Event Listener: All of the above
+
+<details>
+<summary>Click to view code block</summary>
+
+First the variable `generateBtn` targets the button element as it has an id of 'generate'. 
+
+The event listener on `generateBtn` 'listens' for a click. When the user clicks the button, the `writePassword`function is called which utilises all the previous functions to generate a random password and print it to the webpage.
+
+the `dataReset` Function is then called to clear the relevant variables so they are ready for the next execution of the function.
+
+```
+var generateBtn = document.querySelector('#generate');
+
+generateBtn.addEventListener('click', writeNewPassword = () => { 
+  writePassword(); 
+  dataReset(); 
+});
+
+```
+
+</details>
+
+
 
 ## How do I access the page?
