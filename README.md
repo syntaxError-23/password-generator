@@ -386,9 +386,7 @@ function writePassword() {
 
 </details>
 
-
----
-
+\
 The variable `password` is assigned the return value of the `generatePassword` function (`newPasswordString`).
 
 The variable `passwordText` targets the `textarea` element in the HTML. It is then treated is an object (this is an oversimplication).
